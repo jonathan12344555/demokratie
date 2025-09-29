@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demokratie Erleben – Österreich</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    header { text-align: center; padding: 40px 20px 20px; }
+    header h1 {
+      font-size: 2.8em;
+      background: linear-gradient(90deg, #00fff0, #ff00f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    nav button {
+      background: #00fff0;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover { background: #ff00f0; color: #fff; }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+      display: none;
+    }
+    .active { display: block; }
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid #00fff0;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 15px;
+    }
+    .button {
+      background: #00fff0;
+      border: none;
+      padding: 12px;
+      margin: 5px 0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .button:hover { background: #ff00f0; color: #fff; }
+    .fact-box {
+      margin-top: 15px;
+      border-left: 4px solid #ff00f0;
+      padding-left: 15px;
+      font-style: italic;
+      min-height: 40px;
+    }
+    .progress {
+      margin: 15px 0;
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 12px;
+      background: #00fff0;
+      width: 0%;
+      transition: width 0.4s;
+    }
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .card {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      background: #222;
+      border-radius: 10px;
+      cursor: pointer;
+      color: transparent;
+    }
+    .card span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+    }
+    .card.flipped, .card.matched { background: #00fff0; color: #000; }
+    footer { text-align: center; padding: 20px; font-size: 0.9em; color: #aaa; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🇦🇹 Demokratie Erleben</h1>
+    <p>Interaktive Lernplattform über Demokratie in Österreich</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('home')">Start</button>
+    <button onclick="showSection('quiz')">Quiz</button>
+    <button onclick="showSection('facts')">Fakten</button>
+    <button onclick="showSection('games')">Mini-Games</button>
+    <button onclick="showSection('video')">Video</button>
+  </nav>
+
+  <section id="home" class="section active">
+    <div class="box">
+      <h2>Was ist Demokratie?</h2>
+      <p>Österreich ist eine repräsentative Demokratie. Das bedeutet: Bürger*innen wählen Vertreter, die politische Entscheidungen treffen. Die wichtigsten Institutionen sind der Nationalrat, der Bundesrat, die Bundesregierung und der Bundespräsident.</p>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz" class="section">
+    <div class="box">
+      <h2>🎓 Österreich-Quiz</h2>
+      <div class="quiz-container"></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </div>
+  </section>
+
+  <!-- Fakten -->
+  <section id="facts" class="section">
+    <div class="box">
+      <h2>ℹ️ Fakten über Österreichs Demokratie</h2>
+      <button class="button" onclick="showFact()">Nächster Fakt</button>
+      <div id="fact" class="fact-box"></div>
+    </div>
+  </section>
+
+  <!-- Games -->
+  <section id="games" class="section">
+    <div class="box">
+      <h2>🎮 Demokratie-Memory</h2>
+      <div class="memory-grid" id="memory-grid"></div>
+      <p id="memory-result"></p>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section id="video" class="section">
+    <div class="box">
+      <h2>🎬 Erklärvideo</h2>
+      <p>Hier kannst du dein eigenes Video einfügen:</p>
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <footer>© 2025 Demokratie Österreich – Schulprojekt</footer>
+
+  <script>
+    /* Navigation */
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    /* Quiz */
+    const quizData = [
+      { question: "Wie heißt das österreichische Parlament?", options: ["Nationalrat", "Bundesrat", "Ständerat"], correct: 0 },
+      { question: "Wer ist das Staatsoberhaupt?", options: ["Bundespräsident", "Bundeskanzler", "Nationalratspräsident"], correct: 0 },
+      { question: "Wie viele Abgeordnete hat der Nationalrat?", options: ["183", "200", "150"], correct: 0 },
+      { question: "Ab welchem Alter darf man in Österreich wählen?", options: ["16", "18", "21"], correct: 0 },
+      { question: "Wie lange dauert die Amtszeit des Bundespräsidenten?", options: ["4 Jahre", "6 Jahre", "10 Jahre"], correct: 1 },
+      { question: "Welches Gremium vertritt die Bundesländer?", options: ["Bundesrat", "Nationalrat", "Europäischer Rat"], correct: 0 },
+      { question: "Wann trat Österreich der EU bei?", options: ["1995", "2004", "1990"], correct: 0 },
+      { question: "Wo befindet sich das Parlament?", options: ["Wien", "Salzburg", "Graz"], correct: 0 },
+      { question: "Wie heißt das Grundgesetz Österreichs?", options: ["Bundes-Verfassungsgesetz", "Grundgesetz", "Magna Charta"], correct: 0 },
+      { question: "Wer ernennt die Bundesregierung?", options: ["Bundespräsident", "Nationalrat", "Verfassungsgerichtshof"], correct: 0 }
+    ];
+    let currentQuestion = 0, score = 0;
+    function loadQuestion() {
+      const container = document.querySelector('.quiz-container');
+      if (currentQuestion < quizData.length) {
+        const q = quizData[currentQuestion];
+        container.innerHTML = `
+          <p><strong>Frage ${currentQuestion+1} von ${quizData.length}:</strong> ${q.question}</p>
+          ${q.options.map((opt,i)=>`<button class="button" onclick="checkAnswer(${i})">${String.fromCharCode(65+i)}) ${opt}</button>`).join('')}
+          <p id="quiz-result"></p>`;
+        updateProgress();
+      } else {
+        container.innerHTML = `<h3>🎉 Quiz beendet!</h3><p>Du hast <strong>${score} von ${quizData.length}</strong> Fragen richtig beantwortet.</p>`;
+        document.querySelector('.progress-bar').style.width = "100%";
+      }
+    }
+    function checkAnswer(answer) {
+      const q = quizData[currentQuestion];
+      const result = document.getElementById('quiz-result');
+      if (answer === q.correct) { result.textContent="✅ Richtig!"; result.style.color="#00ff88"; score++; }
+      else { result.textContent="❌ Falsch."; result.style.color="#ff4444"; }
+      setTimeout(()=>{ currentQuestion++; loadQuestion(); },1000);
+    }
+    function updateProgress() {
+      const percent = (currentQuestion / quizData.length) * 100;
+      document.querySelector('.progress-bar').style.width = percent+"%";
+    }
+
+    /* Fakten */
+    const facts = [
+      "Österreich ist seit 1918 eine Republik.",
+      "Das Wahlalter für den Nationalrat beträgt 16 Jahre.",
+      "Der Nationalrat besteht aus 183 Abgeordneten.",
+      "Der Bundespräsident wird direkt vom Volk gewählt.",
+      "Österreich trat 1995 der EU bei.",
+      "Es gibt neun Bundesländer in Österreich.",
+      "Die erste Bundespräsidentenwahl durch das Volk war 1951.",
+      "Das Bundeskanzleramt befindet sich am Ballhausplatz in Wien.",
+      "Volksbegehren sind ein direktdemokratisches Instrument.",
+      "Der Bundesrat hat 61 Mitglieder."
+    ];
+    function showFact() {
+      document.getElementById('fact').textContent = facts[Math.floor(Math.random()*facts.length)];
+    }
+
+    /* Memory Game */
+    const symbols = ["🗳️","📜","⚖️","🕊️","🗣️","🏛️"];
+    let cards = [...symbols, ...symbols].sort(() => 0.5 - Math.random());
+    let flipped = [], matchedCount = 0;
+    function renderMemory() {
+      const grid = document.getElementById('memory-grid');
+      grid.innerHTML = '';
+      cards.forEach((symbol,i)=>{
+        const card=document.createElement('div');
+        card.className='card';
+        card.innerHTML=`<span>${symbol}</span>`;
+        card.onclick=()=>flipCard(card,symbol);
+        grid.appendChild(card);
+      });
+    }
+    function flipCard(card,symbol) {
+      if(card.classList.contains('flipped')||card.classList.contains('matched')) return;
+      if(flipped.length===2) return;
+      card.classList.add('flipped'); flipped.push(card);
+      if(flipped.length===2) setTimeout(checkMatch,600);
+    }
+    function checkMatch() {
+      const[c1,c2]=flipped;
+      if(c1.innerText===c2.innerText){
+        c1.classList.add('matched'); c2.classList.add('matched'); matchedCount++;
+        if(matchedCount===symbols.length) document.getElementById('memory-result').textContent="🎉 Alle Paare gefunden!";
+      } else { c1.classList.remove('flipped'); c2.classList.remove('flipped'); }
+      flipped=[];
+    }
+    window.onload=()=>{loadQuestion();renderMemory();};
+  </script>
+</body>
+</html>
