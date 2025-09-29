@@ -1,591 +1,259 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Demokratie Erleben – Österreich</title>
-
-  <!-- ===========================
-       Styles (extern/inline)
-       =========================== -->
   <style>
-    :root{
-      --bg1:#0f0c29; --bg2:#302b63; --bg3:#24243e;
-      --accent1:#00fff0; --accent2:#ff00f0;
-      --muted:#cbd5e1; --card:#111217;
-      --radius:12px;
-      --maxwidth:1100px;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Segoe UI", Roboto, system-ui, Arial, sans-serif;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      font-size:16px;
-      padding-bottom:40px;
+    header { text-align: center; padding: 40px 20px 20px; }
+    header h1 {
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #00fff0, #ff00f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
     }
-
-    /* Header */
-    .site{
-      max-width:var(--maxwidth);
-      margin:18px auto;
-      padding:0 16px;
+    nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    nav button {
+      background: #00fff0; border: none; padding: 12px 18px;
+      border-radius: 8px; font-weight: bold; cursor: pointer;
+      transition: 0.3s; font-size: 1em;
     }
-    header{
-      text-align:center;
-      padding:30px 8px 12px;
+    nav button:hover { background: #ff00f0; color: #fff; }
+    .section { max-width: 1000px; margin: auto; padding: 20px; display: none; }
+    .active { display: block; }
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid #00fff0;
+      padding: 20px; margin: 20px 0; border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
-    header h1{
-      font-size:2.2rem;
-      margin:0 0 6px;
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    .button {
+      background: #00fff0; border: none; padding: 12px; margin: 5px 0;
+      border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;
+      transition: 0.3s; font-size: 1em;
     }
-    header p{ margin:0; color:var(--muted) }
-
-    /* Navigation (responsive) */
-    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:18px; }
-    .nav-toggle{ display:none; background:transparent; border:2px solid rgba(255,255,255,0.06); padding:8px 10px; border-radius:8px; color:var(--muted); cursor:pointer; }
-    nav.buttons{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    nav button{
-      background:var(--accent1);
-      color:#000;
-      border:none;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
-      transition:all .18s ease;
-      min-width:110px;
-      text-align:center;
-    }
-    nav button:hover, nav button:focus{ transform:translateY(-3px); background:linear-gradient(90deg,var(--accent2),var(--accent1)); color:#fff; outline:none; }
-    nav button[aria-current="true"]{ box-shadow:0 6px 20px rgba(0,0,0,0.35); }
-
-    /* Sections */
-    main{ margin-top:18px; }
-    section.card{
-      display:none;
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.06);
-      padding:22px;
-      border-radius:var(--radius);
-      margin:16px 0;
-    }
-    section.card.active{ display:block }
-
-    h2{ margin:0 0 10px; font-size:1.3rem }
-    p.lead{ color:var(--muted); margin:0 0 12px }
-
-    /* general box and buttons inside */
-    .btn{ display:inline-block; background:var(--accent1); color:#000; border:none; padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
-    .btn:hover{ background:linear-gradient(90deg,var(--accent2),var(--accent1)); color:#fff }
-    .muted{ color:var(--muted) }
-
-    /* quiz */
-    .quiz-wrap{ display:grid; gap:12px; grid-template-columns:1fr; align-items:start; }
-    .quiz-opts{ display:grid; gap:10px; }
-    .quiz-opts button{ text-align:left; padding:12px; font-size:1rem }
-    .progress{ height:14px; background:#222; border-radius:8px; overflow:hidden; }
-    .progress > i{ display:block; height:100%; background:linear-gradient(90deg,var(--accent1),var(--accent2)); width:0%; transition:width .4s ease; }
-
-    /* facts */
-    .fact-box{
-      background:rgba(0,0,0,0.15);
-      padding:12px 14px;
-      border-left:4px solid var(--accent2);
-      border-radius:8px;
-      font-style:italic;
-      min-height:56px;
-    }
-
-    /* memory */
-    .memory-grid{
-      display:grid;
-      gap:10px;
-      grid-template-columns:repeat(auto-fit,minmax(64px,1fr));
-      margin-top:12px;
-    }
-    .card-tile{
-      position:relative;
-      background:#111;
-      aspect-ratio:1/1;
-      border-radius:10px;
-      cursor:pointer;
-      display:flex;
-      align-items:center; justify-content:center;
-      font-size:1.6rem;
-      user-select:none;
-      transition:transform .18s ease, background .18s ease;
-    }
-    .card-tile.flipped{ background:var(--accent1); color:#000; transform:scale(1.03) }
-
-    /* truths game */
-    .truths-list{ display:flex; flex-direction:column; gap:10px; margin-top:12px }
-    .truth-btn{ text-align:left; padding:12px; font-weight:600 }
-
-    /* video responsive */
-    .video-wrap{ position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; margin-top:12px; }
-    .video-wrap video, .video-wrap iframe{
-      position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;
-    }
-
-    /* footer */
-    footer{ text-align:center; color:var(--muted); margin-top:18px; font-size:0.9rem }
-
-    /* small screens */
-    @media (max-width:720px){
-      header h1{ font-size:1.6rem }
-      nav.buttons{ display:none; }
-      .nav-toggle{ display:inline-block; }
-      .site{ padding:0 12px }
-      nav.mobile-open{ display:flex; flex-direction:column; gap:8px; margin-top:10px; }
-      .quiz-opts button{ font-size:0.95rem; padding:14px }
-      .card-tile{ font-size:1.4rem }
-    }
-
-    /* focus accessibility */
-    button:focus{ outline:3px solid rgba(0,255,240,0.16); outline-offset:2px }
+    .button:hover { background: #ff00f0; color: #fff; }
+    .fact-box { margin-top: 15px; border-left: 4px solid #ff00f0; padding-left: 15px; font-style: italic; min-height: 40px; }
+    .progress { margin: 15px 0; background: #333; border-radius: 8px; overflow: hidden; }
+    .progress-bar { height: 12px; background: #00fff0; width: 0%; transition: width 0.4s; }
+    .memory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-top: 20px; }
+    .card { width: 100%; padding-top: 100%; position: relative; background: #222; border-radius: 10px; cursor: pointer; }
+    .card span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2em; opacity: 0; transition: 0.3s; }
+    .card.flipped span, .card.matched span { opacity: 1; }
+    .card.flipped, .card.matched { background: #00fff0; color: #000; }
+    video { width: 100%; border-radius: 10px; margin-top: 15px; }
   </style>
 </head>
 <body>
-  <div class="site">
-    <header>
-      <h1>🇦🇹 Demokratie Erleben</h1>
-      <p class="lead">Interaktive Lernplattform zu Demokratie & Politik in Österreich — Quiz, Fakten, Minigames & Video</p>
-    </header>
+  <header>
+    <h1>🇦🇹 Demokratie Erleben</h1>
+    <p>Entdecke die Geschichte, Prinzipien und Besonderheiten der österreichischen Demokratie – mit Quiz, Fakten, Spielen und Videos.</p>
+  </header>
 
-    <!-- top navigation -->
-    <div class="topbar" role="navigation" aria-label="Hauptnavigation">
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navButtons">☰ Menü</button>
-      <nav id="navButtons" class="buttons" aria-label="Seiten-Links">
-        <button onclick="show('home')" id="btn-home" aria-current="true">Start</button>
-        <button onclick="show('quiz')" id="btn-quiz">Quiz</button>
-        <button onclick="show('facts')" id="btn-facts">Fakten</button>
-        <button onclick="show('games')" id="btn-games">Mini-Games</button>
-        <button onclick="show('video')" id="btn-video">Video</button>
-      </nav>
+  <nav>
+    <button onclick="showSection('home')">Start</button>
+    <button onclick="showSection('quiz')">Quiz</button>
+    <button onclick="showSection('facts')">Fakten</button>
+    <button onclick="showSection('games')">Mini-Games</button>
+    <button onclick="showSection('video')">Video</button>
+  </nav>
+
+  <!-- Start -->
+  <section id="home" class="section active">
+    <div class="box">
+      <h2>Demokratie in Österreich</h2>
+      <p>Österreich ist seit 1918 eine Republik und eine parlamentarische Demokratie. Die Verfassung garantiert freie Wahlen, Gewaltenteilung, Grundrechte und Mitbestimmung. Der Nationalrat, der Bundesrat, die Bundesregierung und der Bundespräsident bilden zentrale Organe. Auch direkte Demokratie – durch Volksbegehren, Volksbefragungen und Volksabstimmungen – ist Teil des Systems.</p>
     </div>
+  </section>
 
-    <main>
-      <!-- HOME -->
-      <section id="home" class="card active" aria-labelledby="homeTitle">
-        <h2 id="homeTitle">Was ist Demokratie?</h2>
-        <p class="lead">Österreich ist eine repräsentative, föderale Republik. Die wichtigsten Institutionen sind Nationalrat, Bundesrat, Bundesregierung und Bundespräsident. Im Menü findest du Quiz, Fakten, zwei Minispiele und ein Lernvideo (einfach `meinvideo.mp4` in dasselbe GitHub-Verzeichnis laden).</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-          <button class="btn" onclick="show('quiz')">Quiz starten</button>
-          <button class="btn" onclick="show('facts')">Fakten ansehen</button>
-        </div>
-      </section>
+  <!-- Quiz -->
+  <section id="quiz" class="section">
+    <div class="box">
+      <h2>🎓 Österreich-Quiz</h2>
+      <div class="quiz-container"></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </div>
+  </section>
 
-      <!-- QUIZ -->
-      <section id="quiz" class="card" aria-labelledby="quizTitle">
-        <h2 id="quizTitle">🎓 Österreich-Quiz</h2>
-        <div class="quiz-wrap">
-          <div id="quizQuestion" style="min-height:64px"></div>
-          <div class="quiz-opts" id="quizOptions"></div>
-          <div class="progress" aria-hidden="true"><i id="progBar"></i></div>
-          <div style="display:flex;gap:10px;margin-top:8px">
-            <button class="btn" id="quizRestart" onclick="restartQuiz()" style="background:#ffb703">Neustart</button>
-            <button class="btn" onclick="show('home')" style="background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)">Zurück</button>
-          </div>
-          <div id="quizResult" style="margin-top:10px;color:var(--muted)"></div>
-        </div>
-      </section>
+  <!-- Fakten -->
+  <section id="facts" class="section">
+    <div class="box">
+      <h2>ℹ️ Fakten über Österreichs Demokratie</h2>
+      <button class="button" onclick="showFact()">Nächster Fakt</button>
+      <div id="fact" class="fact-box"></div>
+    </div>
+  </section>
 
-      <!-- FACTS -->
-      <section id="facts" class="card" aria-labelledby="factsTitle">
-        <h2 id="factsTitle">ℹ️ Fakten über Österreich</h2>
-        <p class="muted">Tipp: klicke «Nächster Fakt» für zufällige Informationen. Fakten sind geprüft (Quelle siehe unten).</p>
-        <div style="display:flex;gap:10px;margin-top:12px">
-          <button class="btn" onclick="showFact()">Nächster Fakt</button>
-          <button class="btn" onclick="showAllFacts()" style="background:#ffd166;color:#000">Alle Fakten zeigen</button>
-        </div>
-        <div class="fact-box" id="factBox" aria-live="polite" style="margin-top:12px;"></div>
-        <div id="allFacts" style="margin-top:12px;display:none;max-height:300px;overflow:auto;padding-right:8px"></div>
-      </section>
+  <!-- Mini-Games -->
+  <section id="games" class="section">
+    <div class="box">
+      <h2>🎮 Mini-Game 1: Demokratie-Memory</h2>
+      <div class="memory-grid" id="memory-grid"></div>
+      <p id="memory-result"></p>
+    </div>
+    <div class="box">
+      <h2>🎭 Mini-Game 2: Zwei Wahrheiten & eine Lüge</h2>
+      <div id="truth-lie-container">
+        <p id="truth-lie-question">Klicke auf „Neue Runde“ um zu starten!</p>
+        <div id="truth-lie-options"></div>
+        <p id="truth-lie-result"></p>
+        <button class="button" onclick="newTruthLieRound()">Neue Runde</button>
+      </div>
+    </div>
+  </section>
 
-      <!-- GAMES -->
-      <section id="games" class="card" aria-labelledby="gamesTitle">
-        <h2 id="gamesTitle">🎮 Mini-Games</h2>
+  <!-- Video -->
+  <section id="video" class="section">
+    <div class="box">
+      <h2>📽️ Lernvideo</h2>
+      <video controls>
+        <source src="meinvideo.mp4" type="video/mp4">
+        Dein Browser unterstützt dieses Video-Format nicht.
+      </video>
+    </div>
+  </section>
 
-        <!-- Memory -->
-        <article style="margin-bottom:18px">
-          <h3>1) Demokratie-Memory</h3>
-          <p class="muted">Finde passende Paare. Tippe/Klicke, um Karten umzudrehen.</p>
-          <div style="display:flex;gap:10px;margin:8px 0 12px">
-            <button class="btn" onclick="initMemory()">Neu mischen</button>
-            <button class="btn" onclick="revealAll()" style="background:#ffd166;color:#000">Alle zeigen (zum Lernen)</button>
-            <div style="flex:1"></div>
-            <div class="muted" id="memoryStatus">Gefundene Paare: 0</div>
-          </div>
-          <div class="memory-grid" id="memoryGrid" aria-live="polite"></div>
-        </article>
+  <footer>
+    © 2025 Demokratie Österreich – Schulprojekt
+  </footer>
 
-        <!-- 2 truths 1 lie -->
-        <article>
-          <h3>2) Zwei Wahrheiten & eine Lüge — schwer</h3>
-          <p class="muted">Drei ausführliche Aussagen zur österreichischen Geschichte/Politik — finde die Lüge und lerne die Erklärung dazu.</p>
-          <div style="display:flex;gap:10px;margin:8px 0 12px">
-            <button class="btn" onclick="nextTruthRound()">Neue Runde</button>
-            <button class="btn" onclick="show('facts')" style="background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)">Mehr Fakten</button>
-            <div style="flex:1"></div>
-            <div id="truthScore" class="muted">Punkte: 0</div>
-          </div>
-
-          <div id="truthsArea" style="min-height:120px">
-            <div id="truthQuestion" style="margin-bottom:8px"></div>
-            <div class="truths-list" id="truthBtns"></div>
-            <div id="truthExplain" style="margin-top:12px;color:var(--muted)"></div>
-          </div>
-        </article>
-      </section>
-
-      <!-- VIDEO -->
-      <section id="video" class="card" aria-labelledby="videoTitle">
-        <h2 id="videoTitle">🎬 Lernvideo</h2>
-        <p class="muted">Lade deine Datei mit dem Namen <strong>meinvideo.mp4</strong> in dasselbe GitHub-Repository (root) wie diese Seite — der Player zeigt sie danach automatisch.</p>
-
-        <!-- responsive video wrapper: local mp4 or fallback to YouTube embed if not present -->
-        <div class="video-wrap" id="videoWrap">
-          <!-- Default: local file -->
-          <video id="localVideo" controls preload="metadata">
-            <source src="meinvideo.mp4" type="video/mp4">
-            Dein Browser unterstützt HTML5 Video nicht. (Alternativ: YouTube einbinden)
-          </video>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © 2025 Demokratie Österreich – Schulprojekt — Entwickelt für Unterricht & Lernende
-    </footer>
-  </div>
-
-  <!-- ===========================
-       Script: Funktionalität
-       =========================== -->
   <script>
-    /* -------------------------
-       Hilfsfunktionen & Navigation
-       ------------------------- */
-    const sections = ['home','quiz','facts','games','video'];
-    function show(id){
-      sections.forEach(s=>{
-        document.getElementById(s).classList.remove('active');
-        document.getElementById('btn-'+s).setAttribute('aria-current','false');
-      });
+    // Navigation
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      document.getElementById('btn-'+id).setAttribute('aria-current','true');
-      // collapse mobile nav if open
-      if(window.innerWidth <= 720){
-        navOpen(false);
-      }
     }
-    // mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    navToggle.addEventListener('click', ()=> navOpen(navToggle.getAttribute('aria-expanded')!=='true'));
-    function navOpen(open){
-      const nav = document.getElementById('navButtons');
-      if(open){
-        nav.classList.add('mobile-open');
-        navToggle.setAttribute('aria-expanded','true');
-        nav.style.display='flex';
-      } else {
-        nav.classList.remove('mobile-open');
-        navToggle.setAttribute('aria-expanded','false');
-        if(window.innerWidth<=720) nav.style.display='none';
-      }
-    }
-    // ensure mobile nav initial state
-    window.addEventListener('resize', ()=> {
-      if(window.innerWidth>720){ document.getElementById('navButtons').style.display='flex'; }
-      else { document.getElementById('navButtons').style.display='none'; navToggle.setAttribute('aria-expanded','false'); }
-    });
-    if(window.innerWidth<=720){ document.getElementById('navButtons').style.display='none'; }
 
-    /* ===========================
-       QUIZ (erweitert, ~20 Fragen)
-       =========================== */
+    // Quiz Daten
     const quizData = [
-      { q:"Aus welchen Kammern besteht das österreichische Parlament?", o:["Nationalrat und Bundesrat","Nationalrat und Senat","Bundesrat und Senat"], a:0 },
-      { q:"Wer ist formell Staatsoberhaupt in Österreich?", o:["Bundespräsident","Bundeskanzler","Nationalratspräsident"], a:0 },
-      { q:"Wie viele Abgeordnete hat der Nationalrat (Stand: gesetzliche Mandate)?", o:["183","200","165"], a:0 },
-      { q:"Ab welchem Alter darf man in Österreich bei Nationalratswahlen wählen (allgemeines Wahlrecht)?", o:["16 Jahre","18 Jahre","21 Jahre"], a:0 },
-      { q:"Wie lange dauert die Amtszeit des Bundespräsidenten?", o:["4 Jahre","6 Jahre","8 Jahre"], a:1 },
-      { q:"Welches Gesetz bildet die Grundlage der Bundesverfassung (Kurzname)?", o:["Bundes-Verfassungsgesetz (B-VG)","Staatsvertrag","Grundgesetz"], a:0 },
-      { q:"In welchem Jahr wurde Österreich Mitglied der Europäischen Union?", o:["1995","2004","1990"], a:0 },
-      { q:"Wie viele Bundesländer hat Österreich?", o:["9","7","10"], a:0 },
-      { q:"Welche Aussage zur Bundesratszusammensetzung ist korrekt?", o:["Die Gesamtzahl kann sich nach Volkszählung ändern","Die Anzahl ist immer 61","Der Bundesrat wird direkt vom Volk gewählt"], a:0 },
-      { q:"Welches Instrument zählt zu direkter Demokratie in Österreich?", o:["Volksbegehren","Misstrauensvotum","Bundesgesetz"], a:0 },
-      { q:"Wann begann die Zweite Republik Österreich (nach dem 2. Weltkrieg)?", o:["1945","1918","1955"], a:0 },
-      { q:"Wann wurde in Österreich das allgemeine Frauenwahlrecht eingeführt (Jahr)?", o:["1918","1928","1949"], a:0 },
-      { q:"Was stellte der Staatsvertrag von 1955 für Österreich wieder her?", o:["Vollständige staatliche Souveränität","Einführung der Monarchie","EU-Mitgliedschaft"], a:0 },
-      { q:"Wer ernennt formal den Bundeskanzler?", o:["Bundespräsident","Nationalrat","Bundesrat"], a:0 },
-      { q:"Wo tagt das österreichische Parlament?", o:["Wien","Graz","Salzburg"], a:0 },
-      { q:"Welche Institution vertritt die Bundesländer?", o:["Bundesrat","Nationalrat","Bundesversammlung"], a:0 },
-      { q:"Wie lautet die übliche Sitzverteilung des Nationalrats (Anzahl Sitze)?", o:["183 Sitze","150 Sitze","200 Sitze"], a:0 },
-      { q:"Welche Rolle hat ein Misstrauensvotum im Parlament?", o:["Es kann die Regierung stürzen","Es bestätigt die Regierung","Es wird nur beim Bundespräsidenten beantragt"], a:0 },
-      { q:"Was ist in Österreich eine wichtige Besonderheit der politischen Kultur?", o:["Sozialpartnerschaft (Arbeitgeber & Arbeitnehmer)","Direkte Monarchie","Zweiter Senat mit Vetorecht"], a:0 },
-      { q:"Welches Organ prüft die Verfassungskonformität von Gesetzen in Österreich?", o:["Verfassungsgerichtshof","Bundesrat","Nationalrat"], a:0 }
+      { question: "Wie heißt das österreichische Parlament?", options: ["Reichstag", "Nationalrat", "Volksrat"], correct: 1 },
+      { question: "Wer ist das Staatsoberhaupt in Österreich?", options: ["Bundespräsident", "Bundeskanzler", "Bundesrat"], correct: 0 },
+      { question: "Wie lange dauert die Amtszeit des Bundespräsidenten?", options: ["4 Jahre", "6 Jahre", "10 Jahre"], correct: 1 },
+      { question: "Ab welchem Alter darf man in Österreich Nationalratswahlen wählen?", options: ["16", "18", "21"], correct: 0 },
+      { question: "Wie viele Mitglieder hat der Nationalrat?", options: ["183", "200", "150"], correct: 0 },
+      { question: "Welches Gesetz bildet die Grundlage der Demokratie in Österreich?", options: ["Bundes-Verfassungsgesetz (B-VG)", "Staatsvertrag", "Grundgesetz"], correct: 0 },
+      { question: "Wann trat Österreich der EU bei?", options: ["1995", "2000", "1990"], correct: 0 },
+      { question: "Wie heißt die zweite Kammer des Parlaments?", options: ["Senat", "Bundesrat", "Ständerat"], correct: 1 },
+      { question: "Wie wird ein Gesetz in Österreich beschlossen?", options: ["Nur durch den Bundespräsidenten", "Durch Nationalrat, Bundesrat & Veröffentlichung", "Durch Volksabstimmung"], correct: 1 },
+      { question: "Welches Instrument ist KEINE direkte Demokratie in Österreich?", options: ["Volksbegehren", "Volksabstimmung", "Kaiserliches Dekret"], correct: 2 }
     ];
+    let currentQuestion = 0, score = 0;
 
-    let qIndex=0, qScore=0;
-    const quizQuestion = document.getElementById('quizQuestion');
-    const quizOptions = document.getElementById('quizOptions');
-    const progBar = document.getElementById('progBar');
-    const quizResult = document.getElementById('quizResult');
-
-    function loadQuiz(){
-      quizResult.textContent='';
-      if(qIndex >= quizData.length){
-        quizQuestion.innerHTML = `<strong>Ergebnis:</strong> Du hast ${qScore} von ${quizData.length} richtig beantwortet.`;
-        quizOptions.innerHTML = `<div style="margin-top:8px"><button class="btn" onclick="restartQuiz()">Erneut spielen</button></div>`;
-        progBar.style.width='100%';
-        return;
-      }
-      const item = quizData[qIndex];
-      quizQuestion.innerHTML = `<strong>Frage ${qIndex+1} / ${quizData.length}:</strong> ${escapeHtml(item.q)}`;
-      quizOptions.innerHTML = '';
-      // shuffle options for variety but keep answer index mapping
-      const opts = item.o.map((text, i)=>({i, text})).sort(()=>0.5-Math.random());
-      opts.forEach(opt=>{
-        const btn = document.createElement('button');
-        btn.className='btn';
-        btn.style.textAlign='left';
-        btn.innerText = `${String.fromCharCode(65+opt.i)}) ${opt.text}`;
-        btn.onclick = ()=> {
-          // determine original index
-          const chosen = opt.i;
-          handleAnswer(chosen, item.a);
-        };
-        quizOptions.appendChild(btn);
-      });
-      updateProg();
-    }
-    function handleAnswer(chosen,correct){
-      // disable options to prevent double clicks
-      Array.from(quizOptions.children).forEach(b=> b.disabled=true);
-      const resultEl = document.createElement('div');
-      if(chosen === correct){
-        qScore++;
-        resultEl.innerHTML = `<div style="color:#6ee7b7;margin-top:8px;font-weight:700">✅ Richtig!</div>`;
+    function loadQuestion() {
+      const container = document.querySelector('.quiz-container');
+      if (currentQuestion < quizData.length) {
+        const q = quizData[currentQuestion];
+        container.innerHTML = `
+          <p><strong>Frage ${currentQuestion+1} von ${quizData.length}:</strong> ${q.question}</p>
+          ${q.options.map((opt,i)=>`<button class="button" onclick="checkAnswer(${i})">${String.fromCharCode(65+i)}) ${opt}</button>`).join('')}
+          <p id="quiz-result"></p>`;
+        updateProgress();
       } else {
-        resultEl.innerHTML = `<div style="color:#ff7b7b;margin-top:8px;font-weight:700">❌ Falsch. Richtige Antwort: ${escapeHtml(quizData[qIndex].o[quizData[qIndex].a])}</div>`;
+        container.innerHTML = `<h3>🎉 Quiz beendet!</h3><p>Du hast <strong>${score} von ${quizData.length}</strong> Fragen richtig beantwortet.</p>`;
+        document.querySelector('.progress-bar').style.width = "100%";
       }
-      quizOptions.appendChild(resultEl);
-      setTimeout(()=>{ qIndex++; loadQuiz(); }, 900);
     }
-    function updateProg(){
-      const pct = Math.round((qIndex / quizData.length)*100);
-      progBar.style.width = pct + '%';
+    function checkAnswer(answer) {
+      const q = quizData[currentQuestion];
+      const result = document.getElementById('quiz-result');
+      if (answer === q.correct) { result.textContent="✅ Richtig!"; result.style.color="#00ff88"; score++; }
+      else { result.textContent="❌ Falsch."; result.style.color="#ff4444"; }
+      setTimeout(()=>{ currentQuestion++; loadQuestion(); },1000);
     }
-    function restartQuiz(){ qIndex=0; qScore=0; loadQuiz(); }
+    function updateProgress() {
+      const percent = (currentQuestion / quizData.length) * 100;
+      document.querySelector('.progress-bar').style.width = percent+"%";
+    }
 
-    /* ===========================
-       FACTS (erweitert und geprüft)
-       =========================== */
+    // Fakten
     const facts = [
-      "Die Erste Republik wurde 1918 gegründet (nach dem Ende der Monarchie).",
-      "Das allgemeine Frauenwahlrecht wurde in Österreich am 12. November 1918 eingeführt.",
-      "Der Nationalrat besteht aus 183 Abgeordneten (gesetzliche Mandate).",
-      "Der Bundespräsident wird in direkter Wahl für sechs Jahre gewählt.",
-      "Seit 2007 liegt das Wahlalter für Nationalratswahlen in Österreich bei 16 Jahren.",
-      "Österreich wurde am 1. Januar 1995 Mitglied der Europäischen Union.",
-      "Die Zweite Republik begann 1945 nach dem Ende des Zweiten Weltkriegs.",
-      "1955 stellte der Staatsvertrag Österreichs volle Souveränität wieder her; in der Folge wurde die immerwährende Neutralität erklärt.",
-      "Österreich ist eine föderale Republik mit neun Bundesländern.",
-      "Der Bundesrat vertritt die Bundesländer; die Gesamtzahl der Mandate kann sich nach Volkszählung/Registrierung ändern (z. B. 60–61 in den letzten Jahren).",
-      "Volksbegehren und Volksabstimmungen sind Instrumente direkter Demokratie in Österreich.",
-      "Das Parlamentsgebäude in Wien wurde im 19. Jahrhundert (Erbauungszeitraum: 1874–1883) errichtet.",
-      "Die Sozialpartnerschaft (z. B. ÖGB & Wirtschaftskammer) spielt eine wichtige Rolle in der politischen Praxis Österreichs.",
-      "Der Verfassungsgerichtshof prüft Gesetze auf Verfassungsmäßigkeit.",
-      "Der Nationalrat ist die zentrale Kammer für Gesetzesinitiativen auf Bundesebene.",
-      "Bundesräte werden von den Landtagen entsandt — sie sind nicht direkt gewählt.",
-      "Das Bundes-Verfassungsgesetz (B-VG) ist die zentrale Grundlage des Verfassungsrechts in Österreich.",
-      "Die Amtssprache Österreichs ist Deutsch; Amtstitel sind gesetzlich geregelt.",
-      "Die Volksbefragung ist in Österreich ein beratendes Instrument, Volksabstimmungen können bindend sein.",
-      "Österreich hat eine lange parlamentarische Tradition – das moderne Parlament arbeitet seit 1920 in der Verfassungsform.",
-      "Die Bundesregierung besteht aus Bundeskanzler und Ministern; der Bundeskanzler wird formell vom Bundespräsidenten ernannt.",
-      "Österreich hat ein mehrstufiges Wahlsystem mit regionalen Wahlbezirken und Proporzlisten.",
-      "Das Bundesheer ist die nationale Streitkraft Österreichs (Verteidigung, nicht freiwillige Wehrpflicht abschaffbar durch Gesetzgebung).",
-      "Die Hofburg in Wien ist heute Sitz des Bundespräsidenten (am Heldenplatz bzw. Hofburg-Komplex).",
-      "Die Verhältnisse in Parlament und Bundesrat sind dynamisch: Mandatszahlen/Verteilungen ändern sich durch Landtagswahlen und Zählungsdaten."
+      "Österreich ist seit 1918 eine Republik.",
+      "Das Bundes-Verfassungsgesetz (B-VG) regelt die Demokratie in Österreich.",
+      "Das Wahlalter für den Nationalrat liegt seit 2007 bei 16 Jahren.",
+      "Der Nationalrat besteht aus 183 Abgeordneten.",
+      "Der Bundespräsident wird direkt vom Volk gewählt.",
+      "Österreich trat 1995 der Europäischen Union bei.",
+      "Die erste Republik Österreich entstand 1918.",
+      "Die zweite Republik begann 1945 nach dem Zweiten Weltkrieg.",
+      "Der Staatsvertrag von 1955 beendete die Besatzungszeit.",
+      "Die immerwährende Neutralität wurde 1955 beschlossen.",
+      "Das Parlamentsgebäude in Wien wurde im 19. Jahrhundert erbaut.",
+      "Volksbegehren können von Bürger*innen gestartet werden.",
+      "Eine Volksabstimmung ist bei Verfassungsänderungen verpflichtend.",
+      "Der Bundesrat vertritt die Bundesländer.",
+      "Das Misstrauensvotum ist ein wichtiges Kontrollinstrument des Nationalrats.",
+      "Die Sozialpartnerschaft ist ein besonderes Merkmal der österreichischen Politik.",
+      "Österreich ist eine föderale Republik mit 9 Bundesländern.",
+      "Das Bundesheer ist aufgrund der Neutralität defensiv ausgerichtet.",
+      "Der Verfassungsgerichtshof prüft Gesetze auf ihre Verfassungskonformität.",
+      "Frauen haben seit 1918 in Österreich das Wahlrecht."
     ];
-
-    function showFact(){
-      const f = facts[Math.floor(Math.random()*facts.length)];
-      document.getElementById('factBox').textContent = f;
-      document.getElementById('allFacts').style.display='none';
-    }
-    function showAllFacts(){
-      const el = document.getElementById('allFacts');
-      el.style.display='block';
-      el.innerHTML = facts.map((t,i)=>`<div style="padding:8px 6px;border-bottom:1px dashed rgba(255,255,255,0.03)"><strong>${i+1}.</strong> ${escapeHtml(t)}</div>`).join('');
-      document.getElementById('factBox').textContent = '';
+    function showFact() {
+      document.getElementById('fact').textContent = facts[Math.floor(Math.random()*facts.length)];
     }
 
-    /* ===========================
-       MEMORY GAME (fixed + reset)
-       =========================== */
-    const symbols = ["🗳️","📜","⚖️","🕊️","🗣️","🏛️","🧭","📣"]; // 8 unique symbols -> 16 cards
-    let memCards = [];
-    let memFlipped = [];
-    let memMatched = 0;
+    // Memory
+    const symbols = ["🗳️","📜","⚖️","🕊️","🗣️","🏛️"];
+    let cards = [...symbols, ...symbols].sort(() => 0.5 - Math.random());
+    let flipped = [], matchedCount = 0;
 
-    function initMemory(){
-      const grid = document.getElementById('memoryGrid');
-      memMatched = 0;
-      document.getElementById('memoryStatus').textContent = `Gefundene Paare: ${memMatched}`;
-      // create pairs and shuffle
-      const pairCount = symbols.length;
-      const arr = [];
-      for(let s of symbols){ arr.push(s); arr.push(s); }
-      memCards = arr.sort(()=>0.5-Math.random());
-      grid.innerHTML='';
-      memFlipped = [];
-      memCards.forEach((sym,i)=>{
-        const d = document.createElement('div');
-        d.className='card-tile';
-        d.dataset.sym = sym;
-        d.dataset.idx = i;
-        d.innerHTML = `<span aria-hidden="true">${sym}</span>`;
-        d.onclick = ()=> memFlip(d);
-        grid.appendChild(d);
+    function renderMemory() {
+      const grid = document.getElementById('memory-grid');
+      grid.innerHTML = '';
+      cards.forEach((symbol,i)=>{
+        const card=document.createElement('div');
+        card.className='card';
+        card.innerHTML=`<span>${symbol}</span>`;
+        card.onclick=()=>flipCard(card,symbol);
+        grid.appendChild(card);
       });
     }
-    function memFlip(tile){
-      if(tile.classList.contains('flipped') || tile.classList.contains('matched')) return;
-      if(memFlipped.length===2) return;
-      tile.classList.add('flipped');
-      memFlipped.push(tile);
-      if(memFlipped.length===2) setTimeout(memCheck,600);
+    function flipCard(card,symbol) {
+      if(card.classList.contains('flipped')||card.classList.contains('matched')) return;
+      if(flipped.length===2) return;
+      card.classList.add('flipped'); flipped.push(card);
+      if(flipped.length===2) setTimeout(checkMatch,600);
     }
-    function memCheck(){
-      const [a,b] = memFlipped;
-      if(a.dataset.sym === b.dataset.sym){
-        a.classList.add('matched'); b.classList.add('matched');
-        memMatched++;
-        document.getElementById('memoryStatus').textContent = `Gefundene Paare: ${memMatched}`;
-        if(memMatched === symbols.length){
-          document.getElementById('memoryStatus').textContent = `🎉 Alle Paare gefunden!`;
-        }
-      } else {
-        a.classList.remove('flipped'); b.classList.remove('flipped');
-      }
-      memFlipped = [];
-    }
-    function revealAll(){
-      document.querySelectorAll('.card-tile').forEach(n=>{
-        n.classList.add('flipped');
-      });
+    function checkMatch() {
+      const[c1,c2]=flipped;
+      if(c1.innerText===c2.innerText){
+        c1.classList.add('matched'); c2.classList.add('matched'); matchedCount++;
+        if(matchedCount===symbols.length) document.getElementById('memory-result').textContent="🎉 Alle Paare gefunden!";
+      } else { c1.classList.remove('flipped'); c2.classList.remove('flipped'); }
+      flipped=[];
     }
 
-    /* ===========================
-       2 TRUTHS & 1 LIE (schwer, ausführlich)
-       =========================== */
-    const truthRounds = [
-      {
-        // Round 1
-        statements:[
-          {text:"Der Staatsvertrag von 1955 stellte die volle staatliche Souveränität Österreichs wieder her. In der Folge verabschiedete der Nationalrat die immerwährende Neutralität, die Teil der außenpolitischen Leitlinien wurde.", truth:true, explain:"Der Staatsvertrag (1955) beendete die Besatzungszeit; die Neutralität wurde 1955 gesetzlich verankert."},
-          {text:"Die österreichische Volksabstimmung von 1995 entschied über einen besonderen EU-Beitritt, bei dem Österreich im Parlament ein Sonderstimmrecht in Souveränitätsfragen erhielt.", truth:false, explain:"Falsch — Österreichs EU-Beitritt 1995 erfolgte ohne ein Sonderstimmrecht; Souveränitätsfragen blieben bei nationalen Institutionen."},
-          {text:"Die Verfassung von 1920/1929 sah ursprünglich eine starke Stellung des Bundespräsidenten vor; diese Regelungen wurden später historisch unterschiedlich ausgelegt und angepasst.", truth:true, explain:"Richtig — 1929/Verfassungsänderung stärkte Präsidialbefugnisse; die Praxis variierte politisch und historisch."}
-        ]
-      },
-      {
-        // Round 2
-        statements:[
-          {text:"Das Wahlrecht für Nationalratswahlen wurde in Österreich 2007 auf 16 Jahre gesenkt, mit dem Ziel, Jugendbeteiligung zu stärken.", truth:true, explain:"Richtig — 2007 wurden für bestimmte Wahlen (u.a. kommunal/teilweise) Maßnahmen getroffen; die allgemeine Senkung hat sich etabliert; praktische Anwendung variiert nach Wahlart."},
-          {text:"Der Bundesrat ist eine feste Kammer mit immer genau 61 Abgeordneten, die für sieben Jahre direkt gewählt werden.", truth:false, explain:"Falsch — die Gesamtzahl des Bundesrats kann sich (z.B. 60 oder 61) nach Zählungen/Entschließungen ändern; Bundesräte werden von Landtagen entsandt, nicht direkt vom Volk."},
-          {text:"Das Parlamentsgebäude am Ring in Wien wurde im 19. Jahrhundert errichtet und orientiert sich architektonisch an antiken Vorbildern.", truth:true, explain:"Richtig — das Gebäude entstand Ende 19. Jh. (1874–1883) und zeigt klassizistische Elemente."}
-        ]
-      },
-      {
-        // Round 3
-        statements:[
-          {text:"Österreichs erste Republik (1918) bestand ununterbrochen bis zur zweiten Republik 1945.", truth:false, explain:"Falsch — die Erste Republik (1918–1934) endete durch das autoritäre Austrofaschistische Regime und dann der Anschluss 1938; die Zweite Republik begann 1945."},
-          {text:"Volksbegehren können Bürger*innen initiieren; bei genügender Unterstützung wird das Begehren im Parlament behandelt oder es kann eine Volksabstimmung folgen.", truth:true, explain:"Richtig — Volksbegehren sind möglich; das Verfahren ist gesetzlich geregelt."},
-          {text:"Die Amtszeit des Bundespräsidenten beträgt sechs Jahre; Wiederwahl ist möglich.", truth:true, explain:"Richtig — Präsidentenwahl: direkte Wahl, Amtszeit 6 Jahre; Wiederwahl möglich."}
-        ]
-      },
-      {
-        // Round 4
-        statements:[
-          {text:"Österreich wurde 1995 zusammen mit Finnland und Schweden Mitglied der Europäischen Union (Beitritt am 1. Januar 1995).", truth:true, explain:"Richtig — am 1. Januar 1995 traten Österreich, Finnland und Schweden der EU bei."},
-          {text:"Der Nationalrat hat stets weniger Sitze als der Bundesrat; er ist das kleinere Haus.", truth:false, explain:"Falsch — der Nationalrat ist das größere Haus (183 Sitze), der Bundesrat deutlich kleiner."},
-          {text:"Die Sozialpartnerschaft in Österreich beschreibt die institutionalisierte Zusammenarbeit zwischen Gewerkschaften, Arbeitgeberverbänden und Staat in Wirtschafts- und Sozialfragen.", truth:true, explain:"Richtig — Sozialpartnerschaft ist ein prägendes Element der österreichischen Politik."}
-        ]
-      }
+    // Zwei Wahrheiten und eine Lüge
+    const truthLieSets = [
+      { statements: ["Das Wahlalter in Österreich liegt bei 16.", "Österreich ist eine Monarchie.", "Der Nationalrat hat 183 Abgeordnete."], lie: 1 },
+      { statements: ["Der Bundespräsident wird direkt gewählt.", "Das Parlament tagt in Graz.", "Das B-VG ist die Grundlage der Verfassung."], lie: 1 },
+      { statements: ["Österreich hat 9 Bundesländer.", "Österreich trat 1995 der EU bei.", "Die Neutralität wurde 2005 beschlossen."], lie: 2 },
+      { statements: ["Volksbegehren sind Teil direkter Demokratie.", "Das Misstrauensvotum kann eine Regierung stürzen.", "Die Neutralität wurde 1945 beschlossen."], lie: 2 }
     ];
-
-    let currentTruth = null;
-    let truthScore = 0;
-
-    function nextTruthRound(){
-      const r = truthRounds[Math.floor(Math.random()*truthRounds.length)];
-      // shuffle statements
-      const shuffled = r.statements.map(s=>s).sort(()=>0.5-Math.random());
-      currentTruth = { items:shuffled };
-      document.getElementById('truthExplain').textContent='';
-      renderTruths();
+    function newTruthLieRound() {
+      const container = document.getElementById('truth-lie-options');
+      const result = document.getElementById('truth-lie-result');
+      result.textContent="";
+      const set = truthLieSets[Math.floor(Math.random()*truthLieSets.length)];
+      container.innerHTML = set.statements.map((s,i)=>
+        `<button class="button" onclick="checkTruthLie(${i},${set.lie})">${s}</button>`).join('');
+    }
+    function checkTruthLie(choice,lie) {
+      const result = document.getElementById('truth-lie-result');
+      if(choice===lie){ result.textContent="❌ Das war die Lüge – gut erkannt!"; result.style.color="#00ff88"; }
+      else{ result.textContent="✅ Das war eine Wahrheit. Versuche es nochmal!"; result.style.color="#ff4444"; }
     }
 
-    function renderTruths(){
-      const qEl = document.getElementById('truthQuestion');
-      const bWrap = document.getElementById('truthBtns');
-      qEl.textContent = 'Welche Aussage ist die LÜGE? (klicke zum Auswählen)';
-      bWrap.innerHTML = '';
-      currentTruth.items.forEach((s, idx)=>{
-        const btn = document.createElement('button');
-        btn.className = 'btn truth-btn';
-        btn.innerText = s.text;
-        btn.onclick = ()=> { revealTruth(idx) };
-        bWrap.appendChild(btn);
-      });
-    }
-
-    function revealTruth(choiceIdx){
-      const chosen = currentTruth.items[choiceIdx];
-      const explain = currentTruth.items.map((s,i)=> `${i+1}. ${s.truth ? 'Wahr' : 'Lüge'} — ${s.explain}`).join('\n\n');
-      // Update score
-      const lieIndex = currentTruth.items.findIndex(x=> x.truth===false);
-      let text = '';
-      if(choiceIdx === lieIndex){
-        truthScore++;
-        text = `✅ Du hast die Lüge gefunden! Punkte: ${truthScore}\n\nErklärungen:\n\n${explain}`;
-      } else {
-        text = `❌ Leider nicht. Die Lüge war Aussage ${lieIndex+1}.\n\nErklärungen:\n\n${explain}`;
-      }
-      document.getElementById('truthExplain').innerText = text;
-      document.getElementById('truthScore').innerText = `Punkte: ${truthScore}`;
-    }
-
-    /* ===========================
-       Utility
-       =========================== */
-    function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
-    }
-
-    /* ===========================
-       Init on load
-       =========================== */
-    window.addEventListener('load', ()=>{
-      // initialize components
-      restartQuiz(); // starts quiz lazy-loaded
-      initMemory();
-      nextTruthRound();
-      showFact(); // show first random fact
-      // ensure mobile nav initial correct
-      if(window.innerWidth<=720) document.getElementById('navButtons').style.display='none';
-    });
+    window.onload=()=>{loadQuestion();renderMemory();};
   </script>
 </body>
 </html>
