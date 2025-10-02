@@ -1,20 +1,27 @@
 {
   "quiz": [
-    { "question": "Wie heißt das  Parlament?", "options": ["Reichstag", "Nationalrat", "Volksrat"], "correct": 1 },
-    { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 }
+    { "question": "Warum sollte man das Walrecht nutzen?", "options": ["weil wählen lustig ist ", " Seinen Teil zur Politik beitragen", "Weil man muss "], "correct": 1 };
+    { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 };
+    { "question": "Was sind autoritäre Systeme?", "options": ["Diktatur", "Republik mit Gewaltenteilung", "Demokratie"], "correct": 0 };
+ { "question": "Seit wann dürfen Frauen in Österreich wählen", "options": ["1916", "1918", "1920"], "correct": 1 }; 
+    { "question": "Ab wann durften alle Frauen in Europa wählen ", "options": ["1990", "1945", "1984"], "correct": 2 };
   ],
   "facts": [
     "Österreich ist seit 1918 eine Republik.",
     "Das Bundes-Verfassungsgesetz (B-VG) regelt die Demokratie in Österreich.",
     "Das Wahlalter für den Nationalrat liegt  bei 16 Jahren.",
     "Der Nationalrat besteht aus 183 Abgeordneten.",
-    "Die Neutralität wurde 1955 beschlossen."
+    "Die Neutralität wurde 1955 beschlossen.",
+    "Das höchste politische Amt ist der Bundeskanzler", 
+    "Österreich ist eine parlamentarische Republik"
+    
   ],
   "truthLie": [
     { "statements": ["Napoleon ist der oberste Herrscher in der Geschichte .", "Die Geschichte spielt im Mittelalter.", "Die Figuren haben keine Namen."], "lie": 1 },
     { "statements": ["Es durften nur Bauern wählen .", " Die Frauen bekommen Wahlrecht.", "Prinzessin wurde von der Wahl ausgeschlossen."], "lie": 1 }
   ],
-  "memoryWords": ["Wahlrecht", "autoritär", "Gerechtigkeit", "Verfassung", "Parlament", "Demokratie", "Freiheit" ]
+  "memoryWords": ["Wahlrecht", "Volk", "Gerechtigkeit", "Verfassung", "Parlament", "Demokratie", "Freiheit" ]
 }
+
 
 
