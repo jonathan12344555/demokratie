@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+header h1 {
+  font-size: 2.8em;
+  background: linear-gradient(90deg, #00fff0, #ff00f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  background: rgba(15, 12, 41, 0.9);
+  padding: 12px;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+nav button {
+  background: rgba(0,255,240,0.15);
+  border: 1px solid #00fff0;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  background: #00fff0;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+.button {
+  background: linear-gradient(90deg, #00fff0, #ff00f0);
+  border: none;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  color: #000;
+  transition: 0.3s;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
+
+.fact-box {
+  margin-top: 15px;
+  border-left: 4px solid #ff00f0;
+  padding-left: 15px;
+  font-style: italic;
+  min-height: 40px;
+}
+
+.progress {
+  margin: 15px 0;
+  background: #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 14px;
+  background: linear-gradient(90deg, #00fff0, #ff00f0);
+  width: 0%;
+  transition: width 0.4s;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  background: #1a1a2e;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card.flipped span,
+.card.matched span {
+  opacity: 1;
+}
+
+.card.flipped,
+.card.matched {
+  background: #00fff0;
+  color: #000;
+  transform: scale(1.05);
+}
+
+video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
