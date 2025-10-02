@@ -6,14 +6,15 @@
   "facts": [
     "Österreich ist seit 1918 eine Republik.",
     "Das Bundes-Verfassungsgesetz (B-VG) regelt die Demokratie in Österreich.",
-    "Das Wahlalter für den Nationalrat liegt seit 2007 bei 16 Jahren.",
+    "Das Wahlalter für den Nationalrat liegt  bei 16 Jahren.",
     "Der Nationalrat besteht aus 183 Abgeordneten.",
     "Die Neutralität wurde 1955 beschlossen."
   ],
   "truthLie": [
-    { "statements": ["Das Wahlalter liegt bei 16.", "Österreich ist eine Monarchie.", "Der Nationalrat hat 183 Abgeordnete."], "lie": 1 },
-    { "statements": ["Der Bundespräsident wird direkt gewählt.", "Das Parlament tagt in Graz.", "Das B-VG ist die Grundlage der Verfassung."], "lie": 1 }
+    { "statements": ["Napoleon ist der oberste Herrscher in der Geschichte .", "Die Geschichte spielt im Mittelalter.", "Die Figuren haben keine Namen."], "lie": 1 },
+    { "statements": ["Es durften nur Bauern wählen .", " Die Frauen bekommen Wahlrecht.", "Prinzessin wurde von der Wahl ausgeschlossen."], "lie": 1 }
   ],
-  "memoryWords": ["Demokratie", "Freiheit", "Verfassung", "Neutralität", "Wahlen", "Nationalrat"]
+  "memoryWords": ["Wahlrecht", "autoritär", "Gerechtigkeit", "Verfassung", "Parlament", "Demokratie", "Freiheit" ]
 }
+
 
