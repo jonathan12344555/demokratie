@@ -1,10 +1,10 @@
 {
   "quiz": [
-    { "question": "Warum sollte man das Walrecht nutzen?", "options": ["weil wählen lustig ist ", " Seinen Teil zur Politik beitragen", "Weil man muss "], "correct": 1 };
-    { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 };
-    { "question": "Was sind autoritäre Systeme?", "options": ["Diktatur", "Republik mit Gewaltenteilung", "Demokratie"], "correct": 0 };
- { "question": "Seit wann dürfen Frauen in Österreich wählen", "options": ["1916", "1918", "1920"], "correct": 1 }; 
-    { "question": "Ab wann durften alle Frauen in Europa wählen ", "options": ["1990", "1945", "1984"], "correct": 2 };
+    { "question": "Warum sollte man das Walrecht nutzen?", "options": ["weil wählen lustig ist ", " Seinen Teil zur Politik beitragen", "Weil man muss "], "correct": 1 },
+    { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 },
+    { "question": "Was sind autoritäre Systeme?", "options": ["Diktatur", "Republik mit Gewaltenteilung", "Demokratie"], "correct": 0 },
+ { "question": "Seit wann dürfen Frauen in Österreich wählen", "options": ["1916", "1918", "1920"], "correct": 1 },
+    { "question": "Ab wann durften alle Frauen in Europa wählen ", "options": ["1990", "1945", "1984"], "correct": 2 },
   ],
   "facts": [
     "Österreich ist seit 1918 eine Republik.",
@@ -22,6 +22,7 @@
   ],
   "memoryWords": ["Wahlrecht", "Volk", "Gerechtigkeit", "Verfassung", "Parlament", "Demokratie", "Freiheit" ]
 }
+
 
 
 
