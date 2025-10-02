@@ -1,6 +1,6 @@
 {
   "quiz": [
-    { "question": "Wie heißt das österreichische Parlament?", "options": ["Reichstag", "Nationalrat", "Volksrat"], "correct": 1 },
+    { "question": "Wie heißt das  Parlament?", "options": ["Reichstag", "Nationalrat", "Volksrat"], "correct": 1 },
     { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 }
   ],
   "facts": [
@@ -16,3 +16,4 @@
   ],
   "memoryWords": ["Demokratie", "Freiheit", "Verfassung", "Neutralität", "Wahlen", "Nationalrat"]
 }
+
