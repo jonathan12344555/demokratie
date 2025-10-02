@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demokratie Erleben – Österreich</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🇦🇹 Demokratie Erleben</h1>
+    <p>Entdecke die österreichische Demokratie – mit Quiz, Fakten, Mini-Games und Videos.</p>
+  </header>
+
+  <nav>
+    <button data-target="home">Start</button>
+    <button data-target="quiz">Quiz</button>
+    <button data-target="facts">Fakten</button>
+    <button data-target="games">Mini-Games</button>
+    <button data-target="video">Video</button>
+  </nav>
+
+  <section id="home" class="section active">
+    <div class="box">
+      <h2>Demokratie in Österreich</h2>
+      <p>Österreich ist seit 1918 eine parlamentarische Republik. Die Verfassung garantiert freie Wahlen, Gewaltenteilung, Grundrechte und Mitbestimmung.</p>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="box">
+      <h2>🎓 Quiz</h2>
+      <div class="quiz-container"></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </div>
+  </section>
+
+  <section id="facts" class="section">
+    <div class="box">
+      <h2>ℹ️ Fakten</h2>
+      <button class="button" id="fact-button">Nächster Fakt</button>
+      <div id="fact" class="fact-box"></div>
+    </div>
+  </section>
+
+  <section id="games" class="section">
+    <div class="box">
+      <h2>🎮 Demokratie-Memory</h2>
+      <div class="memory-grid" id="memory-grid"></div>
+      <p id="memory-result"></p>
+    </div>
+    <div class="box">
+      <h2>🎭 Zwei Wahrheiten & eine Lüge</h2>
+      <div id="truth-lie-options"></div>
+      <p id="truth-lie-result"></p>
+      <button class="button" id="truth-lie-new">Neue Runde</button>
+    </div>
+  </section>
+
+  <section id="video" class="section">
+    <div class="box">
+      <h2>📽️ Lernvideo</h2>
+      <video controls>
+        <source src="meinvideo.mp4" type="video/mp4">
+        Dein Browser unterstützt dieses Video-Format nicht.
+      </video>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Demokratie Österreich – Schulprojekt
+  </footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
