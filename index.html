@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -16,7 +15,7 @@
     <button onclick="showSection('home')">Start</button>
     <button onclick="showSection('quiz')">Quiz</button>
     <button onclick="showSection('facts')">Fakten</button>
-    <button onclick="showSection('memory')">Memory</button>
+    <button onclick="showSection('video')">Video</button>
   </nav>
 
   <main>
@@ -37,11 +36,12 @@
       <p id="fact-box"></p>
     </section>
 
-    <section id="memory">
-      <h2>Memory</h2>
-      <div id="memory-grid"></div>
-      <p id="memory-result"></p>
-      <button onclick="initMemory()">Neu starten</button>
+    <section id="video">
+      <h2>Lernvideo</h2>
+      <video controls>
+        <source src="meinvideo.mp4" type="video/mp4">
+        Dein Browser unterstützt dieses Video-Format nicht.
+      </video>
     </section>
   </main>
 
