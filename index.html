@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🇦🇹 Demokratie Erleben</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="glass">
+    <h1>🇦🇹 Demokratie Erleben</h1>
+    <p>Erkunde Österreichs Demokratie mit Wissen, Spielen und Spaß!</p>
+  </header>
+
+  <nav class="glass">
+    <button onclick="showSection('home')">🏠 Start</button>
+    <button onclick="showSection('quiz')">🧠 Quiz</button>
+    <button onclick="showSection('facts')">📘 Fakten</button>
+    <button onclick="showSection('memory')">🎮 Memory</button>
+  </nav>
+
+  <main>
+    <section id="home" class="active glass fade-in">
+      <h2>Willkommen!</h2>
+      <p>Entdecke, wie Demokratie in Österreich funktioniert – interaktiv, spannend und informativ. Lerne, spiele und teste dein Wissen!</p>
+    </section>
+
+    <section id="quiz" class="glass fade-in">
+      <h2>🧠 Demokratie-Quiz</h2>
+      <div id="quiz-container"></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </section>
+
+    <section id="facts" class="glass fade-in">
+      <h2>📘 Fakten</h2>
+      <button class="button" onclick="showFact()">Neuer Fakt</button>
+      <div id="fact-box"></div>
+    </section>
+
+    <section id="memory" class="glass fade-in">
+      <h2>🎮 Demokratie-Memory</h2>
+      <div id="memory-grid"></div>
+      <p id="memory-result"></p>
+    </section>
+  </main>
+
+  <footer class="glass">
+    © 2025 Demokratie Österreich – Schulprojekt | Erstellt mit ❤️
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
