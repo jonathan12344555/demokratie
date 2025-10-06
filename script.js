@@ -16,7 +16,7 @@ function showSection(id) {
   document.getElementById(id).classList.add("active");
 }
 
-// QUIZ
+// Quiz
 function initQuiz() {
   loadQuestion();
 }
@@ -33,7 +33,7 @@ function loadQuestion() {
 
   container.innerHTML = `
     <p><strong>${q.question}</strong></p>
-    ${q.options.map((opt, i) => `<button onclick="checkAnswer(${i})">${opt}</button>`).join("")}
+    ${q.options.map((opt, i) => `<button class="interactive-button" onclick="checkAnswer(${i})">${opt}</button>`).join("")}
   `;
 
   document.querySelector(".progress-bar").style.width = `${(quizIndex / data.quiz.length) * 100}%`;
@@ -45,7 +45,7 @@ function checkAnswer(i) {
   loadQuestion();
 }
 
-// FAKTEN
+// Fakten
 function showFact() {
   const factBox = document.getElementById("fact-box");
   const randomFact = data.facts[Math.floor(Math.random() * data.facts.length)];
