@@ -1,4 +1,3 @@
-
 {
   "quiz": [
     { "question": "Warum sollte man das Wahlrecht nutzen?", "options": ["Weil wählen Spaß macht", "Um seinen Teil zur Politik beizutragen", "Weil man muss"], "correct": 1 },
@@ -15,10 +14,5 @@
     "Die Neutralität wurde 1955 beschlossen.",
     "Das höchste politische Amt ist der Bundespräsident.",
     "Österreich ist eine parlamentarische Republik."
-  ],
-  "truthLie": [
-    { "statements": ["Das Wahlalter liegt bei 16.", "Österreich ist eine Monarchie.", "Der Nationalrat hat 183 Abgeordnete."], "lie": 1 },
-    { "statements": ["Der Bundespräsident wird direkt gewählt.", "Das Parlament tagt in Graz.", "Das B-VG ist die Grundlage der Verfassung."], "lie": 1 }
-  ],
-  "memoryWords": ["Wahlrecht", "Volk", "Gerechtigkeit", "Verfassung", "Parlament", "Demokratie", "Freiheit"]
+  ]
 }
