@@ -33,7 +33,7 @@ function loadQuestion() {
 
   container.innerHTML = `
     <p><strong>${q.question}</strong></p>
-    ${q.options.map((opt, i) => `<button class="interactive-button" onclick="checkAnswer(${i})">${opt}</button>`).join("")}
+    ${q.options.map((opt, i) => `<button class="btn" onclick="checkAnswer(${i})">${opt}</button>`).join("")}
   `;
 
   document.querySelector(".progress-bar").style.width = `${(quizIndex / data.quiz.length) * 100}%`;
