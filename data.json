@@ -1,6 +1,6 @@
 {
   "quiz": [
-    { "question": "Warum sollte man das Wahlrecht nutzen?", "options": ["Weil Berserker Nike Pro", "Um seinen Teil zur Politik beizutragen", "Weil man muss"], "correct": 1 },
+    { "question": "Warum sollte man das Wahlrecht nutzen?", "options": ["Weil wählen lustig ist", "Um seinen Teil zur Politik beizutragen", "Weil man muss"], "correct": 1 },
     { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 },
     { "question": "Was sind autoritäre Systeme?", "options": ["Diktatur", "Republik mit Gewaltenteilung", "Demokratie"], "correct": 0 },
     { "question": "Seit wann dürfen Frauen in Österreich wählen?", "options": ["1916", "1918", "1920"], "correct": 1 },
