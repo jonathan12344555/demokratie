@@ -1,0 +1,1 @@
+console.log('Demokratie erleben mit neuer Farbpalette geladen.');
