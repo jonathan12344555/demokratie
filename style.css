@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #4C9EA0;
+  color: #E8D8D3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+header {
+  background: linear-gradient(90deg, #4C9EA0, #C9A3A3);
+  width: 100%;
+  padding: 40px 0;
+}
+header h1 { color: #E8D8D3; font-size: 3em; }
+nav button {
+  background-color: #C9A3A3;
+  color: #4C9EA0;
+  border: none;
+  padding: 12px 25px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+nav button:hover { background-color: #E8D8D3; color: #4C9EA0; }
+section {
+  display: none;
+  background-color: #E8D8D3;
+  color: #4C9EA0;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 900px;
+  margin-bottom: 25px;
+}
+section.active { display: block; }
+.btn {
+  background-color: #4C9EA0;
+  color: #E8D8D3;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover { background-color: #C9A3A3; color: #4C9EA0; }
+.progress { width: 100%; background-color: #C9A3A3; border-radius: 6px; margin-top: 15px; }
+.progress-bar { height: 12px; width: 0%; background-color: #4C9EA0; border-radius: 6px; transition: width 0.4s; }
+footer { padding: 15px; color: #E8D8D3; }
