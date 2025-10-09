@@ -11,13 +11,13 @@ body {
 header {
   width: 100%;
   padding: 40px 0;
-  background: linear-gradient(90deg, #0B3C49, #28737A);
+  background: linear-gradient(90deg, #0B3C49, #d4d3a7);
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 header h1 { margin: 0; font-size: 3em; color: #6FBFBF; }
 header p { color: #F4E3DE; font-size: 1.2em; }
 nav button {
-  background-color: #28737A;
+  background-color: d4d3a7;
   color: #F4E3DE;
   border: none;
   padding: 12px 25px;
