@@ -1,0 +1,186 @@
+/* Grundlayout */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Header */
+header {
+  width: 100%;
+  padding: 40px 0;
+  background: linear-gradient(90deg, #1f1f1f, #2a2a2a);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  color: #4caf50;
+}
+header p {
+  margin-top: 5px;
+  color: #aaa;
+  font-size: 1.2em;
+}
+
+/* Navigation */
+nav {
+  margin: 20px 0;
+}
+nav button {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: none;
+  padding: 12px 25px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+nav button:hover {
+  background-color: #4caf50;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Sections */
+section {
+  display: none;
+  background-color: #1f1f1f;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 900px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  transition: all 0.4s ease;
+}
+section.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Buttons */
+.btn {
+  background-color: #2e2e2e;
+  color: #f1f1f1;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background-color: #4caf50;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Progress bar */
+.progress {
+  width: 100%;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+.progress-bar {
+  height: 12px;
+  width: 0%;
+  background-color: #4caf50;
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+/* Video */
+video {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 15px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+/* Truth Game */
+#truthgame-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+#truth-result {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* Memory */
+.memory-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.memory-card {
+  perspective: 1000px;
+  cursor: pointer;
+  height: 120px;
+  position: relative;
+}
+.memory-card .card-front,
+.memory-card .card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.memory-card .card-front {
+  background-color: #2e2e2e;
+  font-size: 1.6em;
+  transform: rotateY(0deg);
+}
+.memory-card .card-back {
+  background-color: #1f1f1f;
+  transform: rotateY(180deg);
+  font-size: 0.95em;
+  text-align: center;
+}
+.memory-card.flipped .card-front {
+  transform: rotateY(180deg);
+  transition: transform 0.4s;
+}
+.memory-card.flipped .card-back {
+  transform: rotateY(360deg);
+  transition: transform 0.4s;
+}
+.memory-card.matched {
+  outline: 3px solid rgba(76,175,80,0.35);
+}
+#memory-result {
+  margin-top: 10px;
+  font-weight: 700;
+}
