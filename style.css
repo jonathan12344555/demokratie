@@ -90,3 +90,44 @@ footer{max-width:1100px;width:100%;text-align:center;color:var(--muted);padding:
   .memory-grid{grid-template-columns:repeat(2,1fr)}
   header h1{font-size:20px}
 }
+.video-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.video-container {
+  flex: 1 1 560px;
+  max-width: 560px;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Format */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-text {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.video-text h3 {
+  color: #0056b3;
+}
+
+.video-text p {
+  line-height: 1.6;
+}
