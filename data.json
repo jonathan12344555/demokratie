@@ -4,7 +4,7 @@
     { "question": "Wer ist das Staatsoberhaupt in Österreich?", "options": ["Bundespräsident", "Bundeskanzler", "Bundesrat"], "correct": 0 },
     { "question": "Was sind autoritäre Systeme?", "options": ["Diktatur", "Republik mit Gewaltenteilung", "Demokratie"], "correct": 0 },
     { "question": "Seit wann dürfen Frauen in Österreich wählen?", "options": ["1916", "1918", "1920"], "correct": 1 },
-    { "question": "Ab wann durften alle Frauen in ganz Europa wählen?", "options": ["1990", "1945", "1984"], "correct": 2 }
+    { "question": "Ab wann durften alle Frauen in ganz Europa wählen?", "options": ["1990", "1945", "1984"], "correct": 3 }
   ],
   "facts": [
     {
