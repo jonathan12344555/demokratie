@@ -15,23 +15,35 @@
   </header>
 
   <nav class="main-nav" aria-label="Hauptnavigation">
-    <button onclick="showSection('home')" class="nav-btn">Start</button>
-    <button onclick="showSection('quiz')" class="nav-btn">Quiz</button>
-    <button onclick="showSection('facts')" class="nav-btn">Fakten</button>
-    <button onclick="showSection('truthgame')" class="nav-btn">2 Lügen, 1 Wahrheit</button>
-    <button onclick="showSection('memory')" class="nav-btn">Memory</button>
-    <button onclick="showSection('video')" class="nav-btn">Video</button>
+    <button onclick="showSection('home')" class="nav-btn">🏠 Start</button>
+    <button onclick="showSection('quiz')" class="nav-btn">❓ Quiz</button>
+    <button onclick="showSection('facts')" class="nav-btn">📚 Fakten</button>
+    <button onclick="showSection('truthgame')" class="nav-btn">🎲 2 Lügen, 1 Wahrheit</button>
+    <button onclick="showSection('memory')" class="nav-btn">🧠 Memory</button>
   </nav>
 
   <main>
     <section id="home" class="active card">
-      <h2>Willkommen🇦🇹 🗳️</h2>
+      <h2>Willkommen 🇦🇹 🗳️</h2>
       <p>Demokratie bedeutet für uns, dass jeder das Recht auf Mitbestimmung hat und jede Stimme gleich viel zählt.</p>
       <div class="home-actions">
-        <button class="btn" onclick="showSection('quiz')">Quiz starten</button>
-        <button class="btn" onclick="showSection('truthgame')">Minigame: Zwei Lügen, eine Wahrheit</button>
+        <button class="btn" onclick="showSection('quiz')">▶️ Quiz starten</button>
+        <button class="btn" onclick="showSection('truthgame')">🎯 Minigame: Zwei Lügen, eine Wahrheit</button>
+      </div>
+
+      <h2>Lernvideo 🎥</h2>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px; margin-top:1rem;">
+        <iframe 
+          src="https://www.youtube.com/embed/DEIN_VIDEO_ID" 
+          title="Lernvideo" 
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;">
+        </iframe>
       </div>
     </section>
+
     <section id="quiz" class="card">
       <h2>Quiz</h2>
       <div id="quiz-container" class="quiz-container" aria-live="polite"></div>
@@ -41,7 +53,7 @@
 
     <section id="facts" class="card">
       <h2>Fakten</h2>
-      <button class="btn" onclick="showFact()">Neuer Fakt</button>
+      <button class="btn" onclick="showFact()">🔄 Neuer Fakt</button>
       <div id="fact-box" class="fact-box" aria-live="polite"></div>
     </section>
 
@@ -50,7 +62,7 @@
       <p>Finde heraus, welche Aussage wahr ist!</p>
       <div id="truthgame-container" class="truthgame-container"></div>
       <div class="truth-actions">
-        <button class="btn" onclick="generateTruthGame()">Neue Runde</button>
+        <button class="btn" onclick="generateTruthGame()">🔄 Neue Runde</button>
         <p id="truth-result" class="result" aria-live="polite"></p>
       </div>
     </section>
@@ -60,28 +72,14 @@
       <p>Finde alle passenden Fakten-Paare. Beim Finden eines Paares erscheint eine Erklärung.</p>
       <div id="memory-container" class="memory-grid" role="grid" aria-label="Memory Karten"></div>
       <div class="memory-actions">
-        <button class="btn" onclick="generateMemoryGame()">Neu mischen</button>
+        <button class="btn" onclick="generateMemoryGame()">🔄 Neu mischen</button>
         <p id="memory-result" class="result" aria-live="polite"></p>
       </div>
     </section>
-    <section id="home" class="active card">
-  <h2>Lernvideo</h2>
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
-    <iframe 
-      src="https://www.youtube.com/embed/DEIN_VIDEO_ID" 
-      title="Lernvideo" 
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;">
-    </iframe>
-  </div>
-</section>
-</main>
+  </main>
 
   <footer>
-    <p>© 2025 Demokratie-Projekt Gym-Tamsweg
-</p>
+    <p>© 2025 Demokratie-Projekt Gym-Tamsweg</p>
   </footer>
 
   <script src="script.js"></script>
