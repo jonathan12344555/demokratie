@@ -1,4 +1,3 @@
-// Main JS for Democracy site: quiz, facts, truthgame, memory
 let data;
 let currentQuestion = 0;
 let score = 0;
@@ -32,10 +31,24 @@ function showSection(id){
   document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
   const el = document.getElementById(id);
   if(el) el.classList.add('active');
+
+  // Aktive Section speichern, damit Zustand nach Reload erhalten bleibt
+  localStorage.setItem('activeSection', id);
+
   // reset small result areas
   const tr = document.getElementById('truth-result'); if(tr) tr.textContent='';
   const mr = document.getElementById('memory-result'); if(mr) mr.textContent='';
 }
+
+// Nach Laden der Seite letzten aktiven Bereich anzeigen, Standard ist "home"
+window.addEventListener('load', () => {
+  const activeSection = localStorage.getItem('activeSection');
+  if(activeSection) {
+    showSection(activeSection);
+  } else {
+    showSection('home');
+  }
+});
 
 /* ===== QUIZ ===== */
 function initQuiz(){
@@ -93,9 +106,6 @@ function answerQuiz(idx){
 }
 
 /* ===== FACTS ===== */
-/*
- data.facts can be array of strings OR objects {text: "...", expl:"..."}.
-*/
 function pickFact(){
   const f = data.facts[Math.floor(Math.random()*data.facts.length)];
   if(typeof f === 'string') return {text:f, expl:''};
@@ -177,45 +187,4 @@ function onCardClick(e){
   if(!memoryState.first){ memoryState.first = el; return; }
   memoryState.second = el; memoryState.lock = true;
   const t1 = memoryState.first.dataset.text;
-  const t2 = memoryState.second.dataset.text;
-  if(t1 === t2){
-    // match
-    memoryState.first.classList.add('matched');
-    memoryState.second.classList.add('matched');
-    memoryState.matches += 1;
-    // show explanation if available
-    const factObj = data.facts.find(f => (typeof f==='string'? f : f.text) === t1);
-    const expl = (typeof factObj === 'string') ? '' : (factObj.expl || '');
-    if(expl){
-      document.getElementById('memory-result').innerHTML = `<strong>Erklärung:</strong> ${expl}`;
-    } else {
-      document.getElementById('memory-result').textContent = 'Paar gefunden!';
-    }
-    ensureAudio(); playTone(880,0.09,0.05);
-    setTimeout(()=>{ resetMemoryTurn(); }, 600);
-  } else {
-    ensureAudio(); playTone(240,0.12,0.05);
-    setTimeout(()=>{
-      memoryState.first.classList.remove('flipped');
-      memoryState.second.classList.remove('flipped');
-      resetMemoryTurn();
-    },900);
-  }
-}
-
-function resetMemoryTurn(){ memoryState.first = null; memoryState.second = null; memoryState.lock=false; 
-  if(memoryState.matches === memoryState.cards.length/2){
-    document.getElementById('memory-result').textContent = '🎉 Alle Paare gefunden!';
-  }
-}
-
-/* Accessibility: keyboard support for memory */
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter' || e.key === ' '){
-    const active = document.activeElement;
-    if(active && active.classList.contains('memory-card')){
-      active.click();
-      e.preventDefault();
-    }
-  }
-});
+  const t2 = memoryState.second.dataset.text
