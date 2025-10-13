@@ -65,15 +65,20 @@
         <p id="memory-result" class="result" aria-live="polite"></p>
       </div>
     </section>
-
     <section id="video" class="card">
-      <h2>Lernvideo</h2>
-      <video controls style="max-width:100%;border-radius:8px;">
-        <source src="meinvideo.mp4" type="video/mp4">
-        Dein Browser unterstützt dieses Video-Format nicht.
-      </video>
-    </section>
-  </main>
+  <h2>Lernvideo</h2>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+    <iframe 
+      src="https://www.youtube.com/embed/DEIN_VIDEO_ID" 
+      title="Lernvideo" 
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;">
+    </iframe>
+  </div>
+</section>
+</main>
 
   <footer>
     <p>© 2025 Demokratie-Projekt</p>
