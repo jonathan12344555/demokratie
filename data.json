@@ -17,7 +17,7 @@
     { "question": "Seit wann dürfen Frauen in Österreich wählen?", "options": ["1916", "1918", "1920"], "correct": 1 },
 
 
-    { "question": "Ab wann durften alle Frauen in ganz Europa wählen?", "options": ["1990", "1945", "1984"], "correct": 1 }
+    { "question": "Ab wann durften alle Frauen in ganz Europa wählen?", "options": ["1990", "1945", "1984"], "correct": 0 }
 
 
   ],
@@ -111,6 +111,7 @@
 
 
   ]
+
 
 
 }
